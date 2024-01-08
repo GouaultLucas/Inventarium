@@ -40,6 +40,7 @@
             this.quantite = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BOuvrirTri = new System.Windows.Forms.Button();
             this.BAjouter = new System.Windows.Forms.Button();
             this.BVider = new System.Windows.Forms.Button();
             this.BRecherche = new System.Windows.Forms.Button();
@@ -58,9 +59,9 @@
             this.MenuContextuel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.modifierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.supprimerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.MenuContextuel.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +79,7 @@
             this.quantite});
             this.LVProduit.Dock = System.Windows.Forms.DockStyle.Top;
             this.LVProduit.FullRowSelect = true;
+            this.LVProduit.GridLines = true;
             this.LVProduit.HideSelection = false;
             this.LVProduit.Location = new System.Drawing.Point(0, 0);
             this.LVProduit.Name = "LVProduit";
@@ -85,6 +87,7 @@
             this.LVProduit.TabIndex = 0;
             this.LVProduit.UseCompatibleStateImageBehavior = false;
             this.LVProduit.View = System.Windows.Forms.View.Details;
+            this.LVProduit.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LVProduit_ItemSelectionChanged);
             this.LVProduit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVProduit_MouseClick);
             // 
             // codeRef
@@ -137,6 +140,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BOuvrirTri);
             this.panel1.Controls.Add(this.BAjouter);
             this.panel1.Controls.Add(this.BVider);
             this.panel1.Controls.Add(this.BRecherche);
@@ -159,6 +163,16 @@
             this.panel1.Size = new System.Drawing.Size(987, 178);
             this.panel1.TabIndex = 2;
             // 
+            // BOuvrirTri
+            // 
+            this.BOuvrirTri.Location = new System.Drawing.Point(769, 13);
+            this.BOuvrirTri.Name = "BOuvrirTri";
+            this.BOuvrirTri.Size = new System.Drawing.Size(183, 35);
+            this.BOuvrirTri.TabIndex = 19;
+            this.BOuvrirTri.Text = "Ouvrir les options de tri";
+            this.BOuvrirTri.UseVisualStyleBackColor = true;
+            this.BOuvrirTri.Click += new System.EventHandler(this.BOuvrirTri_Click);
+            // 
             // BAjouter
             // 
             this.BAjouter.Location = new System.Drawing.Point(15, 117);
@@ -171,9 +185,9 @@
             // 
             // BVider
             // 
-            this.BVider.Location = new System.Drawing.Point(779, 117);
+            this.BVider.Location = new System.Drawing.Point(769, 116);
             this.BVider.Name = "BVider";
-            this.BVider.Size = new System.Drawing.Size(163, 35);
+            this.BVider.Size = new System.Drawing.Size(183, 35);
             this.BVider.TabIndex = 17;
             this.BVider.Text = "Vider les champs";
             this.BVider.UseVisualStyleBackColor = true;
@@ -181,9 +195,9 @@
             // 
             // BRecherche
             // 
-            this.BRecherche.Location = new System.Drawing.Point(779, 64);
+            this.BRecherche.Location = new System.Drawing.Point(769, 66);
             this.BRecherche.Name = "BRecherche";
-            this.BRecherche.Size = new System.Drawing.Size(163, 35);
+            this.BRecherche.Size = new System.Drawing.Size(183, 35);
             this.BRecherche.TabIndex = 16;
             this.BRecherche.Text = "Rechercher";
             this.BRecherche.UseVisualStyleBackColor = true;
@@ -299,38 +313,38 @@
             this.modifierToolStripMenuItem1,
             this.supprimerToolStripMenuItem1});
             this.MenuContextuel.Name = "MenuContextuel";
-            this.MenuContextuel.Size = new System.Drawing.Size(211, 134);
+            this.MenuContextuel.Size = new System.Drawing.Size(148, 106);
             this.MenuContextuel.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuContextuel_ItemClicked);
             // 
             // modifierToolStripMenuItem
             // 
             this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
-            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
             this.modifierToolStripMenuItem.Text = "Ajouter";
             // 
             // supprimerToolStripMenuItem
             // 
             this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
             this.supprimerToolStripMenuItem.Text = "Enlever";
             this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.SupprimerToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(144, 6);
             // 
             // modifierToolStripMenuItem1
             // 
             this.modifierToolStripMenuItem1.Name = "modifierToolStripMenuItem1";
-            this.modifierToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.modifierToolStripMenuItem1.Size = new System.Drawing.Size(147, 24);
             this.modifierToolStripMenuItem1.Text = "Modifier";
             // 
             // supprimerToolStripMenuItem1
             // 
             this.supprimerToolStripMenuItem1.Name = "supprimerToolStripMenuItem1";
-            this.supprimerToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.supprimerToolStripMenuItem1.Size = new System.Drawing.Size(147, 24);
             this.supprimerToolStripMenuItem1.Text = "Supprimer";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
             // 
             // Inventarium
             // 
@@ -385,6 +399,7 @@
         private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.Button BOuvrirTri;
     }
 }
 

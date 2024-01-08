@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Utils\DataManager.cs" />
     <Compile Include="Utils\Popups.cs" />
+    <Compile Include="Utils\TriDataManager.cs" />
     <Compile Include="Vues\Inventarium.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +56,12 @@
       <DependentUpon>Inventarium.cs</DependentUpon>
     </Compile>
     <Compile Include="Modele\Produit.cs" />
+    <Compile Include="Vues\ModifierOptionsTri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vues\ModifierOptionsTri.Designer.cs">
+      <DependentUpon>ModifierOptionsTri.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\ProduitAjouter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,8 +70,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vues\ProduitModifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vues\ProduitModifier.Designer.cs">
+      <DependentUpon>ProduitModifier.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Vues\Inventarium.resx">
       <DependentUpon>Inventarium.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ModifierOptionsTri.resx">
+      <DependentUpon>ModifierOptionsTri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ProduitAjouter.resx">
       <DependentUpon>ProduitAjouter.cs</DependentUpon>
@@ -78,6 +94,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vues\ProduitModifier.resx">
+      <DependentUpon>ProduitModifier.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inventarium
 {
-    internal class Produit
+    public class Produit
     {
         private string nom;
         private string reference;

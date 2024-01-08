@@ -33,7 +33,7 @@ namespace Inventarium.Utils
         {
             List<Produit> produits = new List<Produit>();
 
-            List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
+            List<string> lines = LoadLines();
 
             foreach (string line in lines)
             {
@@ -44,6 +44,8 @@ namespace Inventarium.Utils
         }
         public static List<string> LoadLines()
         {
+            PathChecks();
+
             List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
 
             return lines;
@@ -137,7 +139,7 @@ namespace Inventarium.Utils
         }
         public static void AjouterProduit(Produit produit)
         {
-            List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
+            List<string> lines = LoadLines();
 
             lines.Add(ProduitToLine(produit));
 
@@ -145,7 +147,7 @@ namespace Inventarium.Utils
         }
         public static void ModifierProduit(Produit produitAvant, Produit produitApres)
         {
-            List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
+            List<string> lines = LoadLines();
 
             for(int i = 0; i < lines.Count; i++)
             {
@@ -156,6 +158,15 @@ namespace Inventarium.Utils
                     lines[i] = ProduitToLine(produitApres);
                 }
             }
+
+            System.IO.File.WriteAllLines(csvPath, lines);
+        }
+
+        public static void SupprimerProduit(Produit produit)
+        {
+            List<string> lines = LoadLines();
+
+            lines.Remove(ProduitToLine(produit));
 
             System.IO.File.WriteAllLines(csvPath, lines);
         }

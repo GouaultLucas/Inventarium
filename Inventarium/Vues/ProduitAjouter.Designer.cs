@@ -56,7 +56,7 @@
             // 
             this.LbAjouter.AutoSize = true;
             this.LbAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbAjouter.Location = new System.Drawing.Point(12, 9);
+            this.LbAjouter.Location = new System.Drawing.Point(138, 36);
             this.LbAjouter.Name = "LbAjouter";
             this.LbAjouter.Size = new System.Drawing.Size(257, 32);
             this.LbAjouter.TabIndex = 0;
@@ -65,7 +65,7 @@
             // LbRef
             // 
             this.LbRef.AutoSize = true;
-            this.LbRef.Location = new System.Drawing.Point(15, 64);
+            this.LbRef.Location = new System.Drawing.Point(66, 102);
             this.LbRef.Name = "LbRef";
             this.LbRef.Size = new System.Drawing.Size(70, 16);
             this.LbRef.TabIndex = 1;
@@ -73,14 +73,14 @@
             // 
             // TRef
             // 
-            this.TRef.Location = new System.Drawing.Point(172, 61);
+            this.TRef.Location = new System.Drawing.Point(223, 99);
             this.TRef.Name = "TRef";
             this.TRef.Size = new System.Drawing.Size(254, 22);
             this.TRef.TabIndex = 2;
             // 
             // TFournisseur
             // 
-            this.TFournisseur.Location = new System.Drawing.Point(172, 89);
+            this.TFournisseur.Location = new System.Drawing.Point(223, 127);
             this.TFournisseur.Name = "TFournisseur";
             this.TFournisseur.Size = new System.Drawing.Size(254, 22);
             this.TFournisseur.TabIndex = 4;
@@ -88,7 +88,7 @@
             // LbFournisseur
             // 
             this.LbFournisseur.AutoSize = true;
-            this.LbFournisseur.Location = new System.Drawing.Point(15, 92);
+            this.LbFournisseur.Location = new System.Drawing.Point(66, 130);
             this.LbFournisseur.Name = "LbFournisseur";
             this.LbFournisseur.Size = new System.Drawing.Size(77, 16);
             this.LbFournisseur.TabIndex = 3;
@@ -96,7 +96,7 @@
             // 
             // TCategorie
             // 
-            this.TCategorie.Location = new System.Drawing.Point(172, 117);
+            this.TCategorie.Location = new System.Drawing.Point(223, 155);
             this.TCategorie.Name = "TCategorie";
             this.TCategorie.Size = new System.Drawing.Size(254, 22);
             this.TCategorie.TabIndex = 6;
@@ -104,7 +104,7 @@
             // LbCategorie
             // 
             this.LbCategorie.AutoSize = true;
-            this.LbCategorie.Location = new System.Drawing.Point(15, 120);
+            this.LbCategorie.Location = new System.Drawing.Point(66, 158);
             this.LbCategorie.Name = "LbCategorie";
             this.LbCategorie.Size = new System.Drawing.Size(66, 16);
             this.LbCategorie.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             // TNom
             // 
-            this.TNom.Location = new System.Drawing.Point(172, 145);
+            this.TNom.Location = new System.Drawing.Point(223, 183);
             this.TNom.Name = "TNom";
             this.TNom.Size = new System.Drawing.Size(254, 22);
             this.TNom.TabIndex = 8;
@@ -120,7 +120,7 @@
             // LbNom
             // 
             this.LbNom.AutoSize = true;
-            this.LbNom.Location = new System.Drawing.Point(15, 148);
+            this.LbNom.Location = new System.Drawing.Point(66, 186);
             this.LbNom.Name = "LbNom";
             this.LbNom.Size = new System.Drawing.Size(36, 16);
             this.LbNom.TabIndex = 7;
@@ -129,7 +129,7 @@
             // NPrixHT
             // 
             this.NPrixHT.DecimalPlaces = 2;
-            this.NPrixHT.Location = new System.Drawing.Point(172, 173);
+            this.NPrixHT.Location = new System.Drawing.Point(223, 211);
             this.NPrixHT.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -148,7 +148,7 @@
             // LbPrixHT
             // 
             this.LbPrixHT.AutoSize = true;
-            this.LbPrixHT.Location = new System.Drawing.Point(15, 175);
+            this.LbPrixHT.Location = new System.Drawing.Point(66, 213);
             this.LbPrixHT.Name = "LbPrixHT";
             this.LbPrixHT.Size = new System.Drawing.Size(48, 16);
             this.LbPrixHT.TabIndex = 10;
@@ -157,7 +157,7 @@
             // LbPrixTTC
             // 
             this.LbPrixTTC.AutoSize = true;
-            this.LbPrixTTC.Location = new System.Drawing.Point(15, 203);
+            this.LbPrixTTC.Location = new System.Drawing.Point(66, 241);
             this.LbPrixTTC.Name = "LbPrixTTC";
             this.LbPrixTTC.Size = new System.Drawing.Size(56, 16);
             this.LbPrixTTC.TabIndex = 12;
@@ -166,7 +166,7 @@
             // NPrixTTC
             // 
             this.NPrixTTC.DecimalPlaces = 2;
-            this.NPrixTTC.Location = new System.Drawing.Point(172, 201);
+            this.NPrixTTC.Location = new System.Drawing.Point(223, 239);
             this.NPrixTTC.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -185,7 +185,7 @@
             // LbDate
             // 
             this.LbDate.AutoSize = true;
-            this.LbDate.Location = new System.Drawing.Point(15, 234);
+            this.LbDate.Location = new System.Drawing.Point(66, 272);
             this.LbDate.Name = "LbDate";
             this.LbDate.Size = new System.Drawing.Size(36, 16);
             this.LbDate.TabIndex = 13;
@@ -193,14 +193,14 @@
             // 
             // DTDate
             // 
-            this.DTDate.Location = new System.Drawing.Point(172, 229);
+            this.DTDate.Location = new System.Drawing.Point(223, 267);
             this.DTDate.Name = "DTDate";
             this.DTDate.Size = new System.Drawing.Size(254, 22);
             this.DTDate.TabIndex = 14;
             // 
             // NQuantite
             // 
-            this.NQuantite.Location = new System.Drawing.Point(172, 257);
+            this.NQuantite.Location = new System.Drawing.Point(223, 295);
             this.NQuantite.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -214,7 +214,7 @@
             // LbQuantite
             // 
             this.LbQuantite.AutoSize = true;
-            this.LbQuantite.Location = new System.Drawing.Point(15, 259);
+            this.LbQuantite.Location = new System.Drawing.Point(66, 297);
             this.LbQuantite.Name = "LbQuantite";
             this.LbQuantite.Size = new System.Drawing.Size(56, 16);
             this.LbQuantite.TabIndex = 16;
@@ -222,7 +222,7 @@
             // 
             // BAjouter
             // 
-            this.BAjouter.Location = new System.Drawing.Point(263, 297);
+            this.BAjouter.Location = new System.Drawing.Point(314, 335);
             this.BAjouter.Name = "BAjouter";
             this.BAjouter.Size = new System.Drawing.Size(163, 35);
             this.BAjouter.TabIndex = 19;
@@ -232,7 +232,7 @@
             // 
             // BVider
             // 
-            this.BVider.Location = new System.Drawing.Point(18, 297);
+            this.BVider.Location = new System.Drawing.Point(69, 335);
             this.BVider.Name = "BVider";
             this.BVider.Size = new System.Drawing.Size(163, 35);
             this.BVider.TabIndex = 20;
@@ -245,7 +245,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GreenYellow;
-            this.ClientSize = new System.Drawing.Size(444, 354);
+            this.ClientSize = new System.Drawing.Size(547, 432);
             this.Controls.Add(this.BVider);
             this.Controls.Add(this.BAjouter);
             this.Controls.Add(this.LbQuantite);

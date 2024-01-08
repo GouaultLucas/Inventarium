@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using static System.Windows.Forms.ListViewItem;
+using Inventarium.Vues;
 
 namespace Inventarium
 {
@@ -231,6 +232,57 @@ namespace Inventarium
                     LoadList();
                 }
             }
+            else if(e.ClickedItem.Text == "Modifier")
+            {
+                if(selectedIndex != -1)
+                {
+                    Produit leProduit = DataManager.LineToProduit(DataManager.ItemToLine(LVProduit.Items[selectedIndex]));
+                    using (ProduitModifier frm = new ProduitModifier(leProduit))
+                    {
+                        this.Hide();
+                        frm.ShowDialog();
+                        this.Show();
+
+                        DataManager.ModifierProduit(leProduit, frm.produit);
+
+                        LoadList();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Attention !", "Veuillez d'abord sélectionner une valeur dans le tableau !");
+                }
+            }
+            else if(e.ClickedItem.Text == "Supprimer")
+            {
+                if(selectedIndex != -1)
+                {
+                    for(int i = 0; i < LVProduit.SelectedItems.Count; i++)
+                    {
+                        DataManager.SupprimerProduit(DataManager.LineToProduit(DataManager.ItemToLine(LVProduit.SelectedItems[i])));
+                    }
+
+                    LoadList();
+                }
+                else
+                {
+                    MessageBox.Show("Attention !", "Veuillez d'abord sélectionner une valeur dans le tableau !");
+                }
+            }
+        }
+        private int selectedIndex = -1;
+
+        private void LVProduit_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            selectedIndex = e.ItemIndex;
+        }
+
+        private void BOuvrirTri_Click(object sender, EventArgs e)
+        {
+            ModifierOptionsTri modifierOptionsTri = new ModifierOptionsTri();
+            this.Hide();
+            modifierOptionsTri.Show();
+            modifierOptionsTri.FormClosed += (source, args) => this.Show();
         }
     }
 }
