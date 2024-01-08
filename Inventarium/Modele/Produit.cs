@@ -19,18 +19,6 @@ namespace Inventarium
         private DateTime  date;
 
         private int       quantite;
-        
-        public Produit(bool boobool)
-        {
-            Reference = "Youn1";
-            Fournisseur = "Thomas Corp";
-            Categorie = "Esclave Sexuel";
-            Nom = "Younette";
-            PrixHT = 112;
-            PrixTTC = 200;
-            Date = DateTime.Now;
-            Quantite = 1;
-        }
         public Produit()
         {
 
@@ -54,6 +42,20 @@ namespace Inventarium
             PrixTTC = prixTTC;
             Date = date;
             Quantite = quantite;
+        }
+
+        public Produit Clone()
+        {
+            return new Produit(
+                    this.Reference,
+                    this.Fournisseur,
+                    this.Categorie,
+                    this.Nom,
+                    this.PrixHT,
+                    this.PrixTTC,
+                    this.date,
+                    this.Quantite
+                );
         }
 
         public string Reference { get => reference; set => reference = value; }

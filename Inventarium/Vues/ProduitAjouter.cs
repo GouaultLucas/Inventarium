@@ -53,8 +53,7 @@ namespace Inventarium
 
             Produit produit = new Produit(reference, fournisseur, categorie, nom, prixHT, prixTTC, date, quantite);
 
-            DataManager dataManager = new DataManager();
-            dataManager.AjouterProduit(produit);
+            DataManager.AjouterProduit(produit);
 
             this.Close();
         }

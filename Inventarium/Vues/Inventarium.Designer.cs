@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LVProduit = new System.Windows.Forms.ListView();
             this.codeRef = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fournisseur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.categorie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.quantite = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prixHT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prixTTC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantite = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BAjouter = new System.Windows.Forms.Button();
@@ -54,7 +55,14 @@
             this.LbFournisseur = new System.Windows.Forms.Label();
             this.TRef = new System.Windows.Forms.TextBox();
             this.LbRef = new System.Windows.Forms.Label();
+            this.MenuContextuel = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
+            this.MenuContextuel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LVProduit
@@ -77,6 +85,7 @@
             this.LVProduit.TabIndex = 0;
             this.LVProduit.UseCompatibleStateImageBehavior = false;
             this.LVProduit.View = System.Windows.Forms.View.Details;
+            this.LVProduit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LVProduit_MouseClick);
             // 
             // codeRef
             // 
@@ -98,11 +107,6 @@
             this.nom.Text = "Nom";
             this.nom.Width = 140;
             // 
-            // quantite
-            // 
-            this.quantite.Text = "Quantité";
-            this.quantite.Width = 71;
-            // 
             // prixHT
             // 
             this.prixHT.Text = "Prix HT";
@@ -115,6 +119,11 @@
             // 
             this.date.Text = "Date";
             this.date.Width = 76;
+            // 
+            // quantite
+            // 
+            this.quantite.Text = "Quantité";
+            this.quantite.Width = 71;
             // 
             // label1
             // 
@@ -178,6 +187,7 @@
             this.BRecherche.TabIndex = 16;
             this.BRecherche.Text = "Rechercher";
             this.BRecherche.UseVisualStyleBackColor = true;
+            this.BRecherche.Click += new System.EventHandler(this.Rechercher);
             // 
             // LbAvant
             // 
@@ -279,6 +289,49 @@
             this.LbRef.TabIndex = 2;
             this.LbRef.Text = "Référence";
             // 
+            // MenuContextuel
+            // 
+            this.MenuContextuel.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.MenuContextuel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifierToolStripMenuItem,
+            this.supprimerToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.modifierToolStripMenuItem1,
+            this.supprimerToolStripMenuItem1});
+            this.MenuContextuel.Name = "MenuContextuel";
+            this.MenuContextuel.Size = new System.Drawing.Size(211, 134);
+            this.MenuContextuel.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuContextuel_ItemClicked);
+            // 
+            // modifierToolStripMenuItem
+            // 
+            this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.modifierToolStripMenuItem.Text = "Ajouter";
+            // 
+            // supprimerToolStripMenuItem
+            // 
+            this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.supprimerToolStripMenuItem.Text = "Enlever";
+            this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.SupprimerToolStripMenuItem_Click);
+            // 
+            // modifierToolStripMenuItem1
+            // 
+            this.modifierToolStripMenuItem1.Name = "modifierToolStripMenuItem1";
+            this.modifierToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.modifierToolStripMenuItem1.Text = "Modifier";
+            // 
+            // supprimerToolStripMenuItem1
+            // 
+            this.supprimerToolStripMenuItem1.Name = "supprimerToolStripMenuItem1";
+            this.supprimerToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.supprimerToolStripMenuItem1.Text = "Supprimer";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
+            // 
             // Inventarium
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -293,6 +346,7 @@
             this.Shown += new System.EventHandler(this.Inventarium_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.MenuContextuel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -325,6 +379,12 @@
         private System.Windows.Forms.Button BRecherche;
         private System.Windows.Forms.Button BVider;
         private System.Windows.Forms.Button BAjouter;
+        private System.Windows.Forms.ContextMenuStrip MenuContextuel;
+        private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

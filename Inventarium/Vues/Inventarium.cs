@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 using static System.Windows.Forms.ListViewItem;
 
 namespace Inventarium
 {
     public partial class Inventarium : Form
     {
-        private DataManager dataManager = new DataManager();
+        private readonly List<Produit> produits = new List<Produit>();
         public Inventarium()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace Inventarium
 
         private void Inventarium_Shown(object sender, EventArgs e)
         {
-            dataManager.PathChecks();
+            DataManager.PathChecks();
 
             LoadList();
         }
@@ -30,32 +31,34 @@ namespace Inventarium
         private void LoadList()
         {
             LVProduit.Items.Clear();
+            produits.Clear();
 
-            List<string> lines = dataManager.LoadLines();
+            List<string> lines = DataManager.LoadLines();
             foreach (string line in lines)
             {
-                Console.WriteLine(line);
-                string[] valeurs = line.Split(';');
+                Produit produit = DataManager.LineToProduit(line);
+                produits.Add(produit);
 
-                string reference = valeurs[0],
-                    fournisseur = valeurs[1],
-                    categorie = valeurs[2],
-                    nom = valeurs[3],
-                    prixHT = valeurs[4],
-                    prixTTC = valeurs[5],
-                    date = valeurs[6],
-                    quantite = valeurs[7];
-
-                ListViewItem item = new ListViewItem(reference);
-                item.SubItems.Add(fournisseur);
-                item.SubItems.Add(categorie);
-                item.SubItems.Add(nom);
-                item.SubItems.Add(prixHT);
-                item.SubItems.Add(prixTTC);
-                item.SubItems.Add(date);
-                item.SubItems.Add(quantite);
+                ListViewItem item = new ListViewItem(produit.Reference);
+                item.SubItems.Add(produit.Fournisseur);
+                item.SubItems.Add(produit.Categorie);
+                item.SubItems.Add(produit.Nom);
+                item.SubItems.Add(produit.PrixHT.ToString());
+                item.SubItems.Add(produit.PrixTTC.ToString());
+                item.SubItems.Add(line.Split(';')[6]);
+                item.SubItems.Add(produit.Quantite.ToString());
 
                 LVProduit.Items.Add(item);
+            }
+        }
+
+        private void LoadList(List<Produit> produits)
+        {
+            LVProduit.Items.Clear();
+
+            foreach (Produit produit in produits)
+            {
+                LVProduit.Items.Add(DataManager.LineToItem(DataManager.ProduitToLine(produit)));
             }
         }
 
@@ -84,8 +87,8 @@ namespace Inventarium
             TCateg.Text = String.Empty;
             TNom.Text = String.Empty;
 
-            DTApres.Value = DateTime.Now;
-            DTAvant.Value = DateTime.Now;
+            DTApres.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DTAvant.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
             DTApres.Checked = false;
             DTAvant.Checked = false;
@@ -96,7 +99,138 @@ namespace Inventarium
         }
         private void Rechercher(object sender, EventArgs e)
         {
+            LVProduit.Items.Clear();
 
+            List<Produit> lesProduits = produits.ToList();
+
+            if(TRef.Text != "")
+            {
+                for (int i = 0; i < lesProduits.Count; i++)
+                {
+                    if (!lesProduits[i].Reference.Contains(TRef.Text))
+                    {
+                        lesProduits.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if(TFournisseur.Text != "")
+            {
+                for (int i = 0; i < lesProduits.Count; i++)
+                {
+                    if (!lesProduits[i].Fournisseur.Contains(TFournisseur.Text))
+                    {
+                        lesProduits.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if (TCateg.Text != "")
+            {
+                for (int i = 0; i < lesProduits.Count; i++)
+                {
+                    if (!lesProduits[i].Categorie.Contains(TCateg.Text))
+                    {
+                        lesProduits.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if (TNom.Text != "")
+            {
+                for (int i = 0; i < lesProduits.Count; i++)
+                {
+                    if (!lesProduits[i].Nom.Contains(TNom.Text))
+                    {
+                        lesProduits.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if(DTApres.Checked && DTAvant.Checked)
+            {
+                if (DTApres.Value > DTAvant.Value)
+                {
+                    (DTAvant.Value, DTApres.Value) = (DTApres.Value, DTAvant.Value);
+                }
+            }
+
+            if(DTApres.Checked)
+            {
+                for (int i = 0; i < lesProduits.Count; i++)
+                {
+                    if (lesProduits[i].Date < DTApres.Value)
+                    {
+                        lesProduits.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if (DTAvant.Checked)
+            {
+                for (int i = 0; i < lesProduits.Count; i++)
+                {
+                    if (lesProduits[i].Date > DTAvant.Value)
+                    {
+                        lesProduits.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            LoadList(lesProduits);
+        }
+
+        private void SupprimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LVProduit_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                MenuContextuel.Show(LVProduit, e.X, e.Y);
+            }
+        }
+
+        private void MenuContextuel_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if(e.ClickedItem.Text == "Ajouter")
+            {
+                int value = Popups.GetInt("Combien voulez-vous enlever ?", "Veuillez entrer un nombre", "0");
+
+                for (int i = 0; i < LVProduit.SelectedItems.Count; i++)
+                {
+                    Produit ancienProduit = DataManager.LineToProduit(DataManager.ItemToLine(LVProduit.SelectedItems[i]));
+                    Produit nouveauProduit = ancienProduit.Clone();
+                    nouveauProduit.Quantite += value;
+
+                    DataManager.ModifierProduit(ancienProduit, nouveauProduit);
+
+                    LoadList();
+                }
+            }
+            else if(e.ClickedItem.Text == "Enlever")
+            {
+                int value = Popups.GetInt("Combien voulez-vous enlever ?", "Veuillez entrer un nombre", "0");
+
+                for (int i = 0; i < LVProduit.SelectedItems.Count; i++)
+                {
+                    Produit ancienProduit = DataManager.LineToProduit(DataManager.ItemToLine(LVProduit.SelectedItems[i]));
+                    Produit nouveauProduit = ancienProduit.Clone();
+                    nouveauProduit.Quantite -= value;
+
+                    DataManager.ModifierProduit(ancienProduit, nouveauProduit);
+
+                    LoadList();
+                }
+            }
         }
     }
 }

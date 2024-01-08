@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Inventarium.Utils
 {
     internal class DataManager
     {
-        readonly string csvPath = "Data/inventaire.csv";
-        private bool DataFileExists()
+        readonly static string csvPath = "Data/inventaire.csv";
+        private static bool DataFileExists()
         {
             return System.IO.File.Exists(csvPath);
         }
-        private bool DataFolderExists()
+        private static bool DataFolderExists()
         {
             return System.IO.Directory.Exists("Data");
         }
-        public void PathChecks()
+        public static void PathChecks()
         {
             if (!DataFolderExists()) {
                 System.IO.Directory.CreateDirectory("Data");
@@ -28,7 +29,7 @@ namespace Inventarium.Utils
                 System.IO.File.WriteAllText(csvPath, "");
             }
         }
-        public List<Produit> LoadData()
+        public static List<Produit> LoadData()
         {
             List<Produit> produits = new List<Produit>();
 
@@ -41,13 +42,13 @@ namespace Inventarium.Utils
 
             return produits;
         }
-        public List<string> LoadLines()
+        public static List<string> LoadLines()
         {
             List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
 
             return lines;
         }
-        private Produit LineToProduit(string line)
+        public static Produit LineToProduit(string line)
         {
             string[] valeurs = line.Split(';');
 
@@ -68,7 +69,47 @@ namespace Inventarium.Utils
 
             return produit;
         }
-        private string ProduitToLine(Produit produit)
+        public static ListViewItem LineToItem(string line)
+        {
+            Produit produit = LineToProduit(line);
+
+            ListViewItem item = new ListViewItem(produit.Reference);
+            item.SubItems.Add(produit.Fournisseur);
+            item.SubItems.Add(produit.Categorie);
+            item.SubItems.Add(produit.Nom);
+            item.SubItems.Add(produit.PrixHT.ToString());
+            item.SubItems.Add(produit.PrixTTC.ToString());
+            item.SubItems.Add(line.Split(';')[6]);
+            item.SubItems.Add(produit.Quantite.ToString());
+
+            return item;
+        }
+        public static string ItemToLine(ListViewItem item)
+        {
+            string reference = item.SubItems[0].Text,
+                    fournisseur = item.SubItems[1].Text,
+                    categorie = item.SubItems[2].Text,
+                    nom = item.SubItems[3].Text;
+
+            decimal.TryParse(item.SubItems[4].Text, out decimal prixHT);
+            decimal.TryParse(item.SubItems[5].Text, out decimal prixTTC);
+
+            string strDate = item.SubItems[6].Text;
+
+            int.TryParse(item.SubItems[7].Text, out int quantite);
+
+            string line = reference + ";" +
+                fournisseur + ";" +
+                categorie + ";" +
+                nom + ";" +
+                prixHT.ToString() + ";" +
+                prixTTC.ToString() + ";" +
+                strDate + ";" +
+                quantite;
+
+            return line;
+        }
+        public static string ProduitToLine(Produit produit)
         {
             string reference = produit.Reference,
                     fournisseur = produit.Fournisseur,
@@ -92,14 +133,29 @@ namespace Inventarium.Utils
                 strDate + ";" +
                 quantite;
 
-            Console.WriteLine(line);
             return line;
         }
-        public void AjouterProduit(Produit produit)
+        public static void AjouterProduit(Produit produit)
         {
             List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
 
             lines.Add(ProduitToLine(produit));
+
+            System.IO.File.WriteAllLines(csvPath, lines);
+        }
+        public static void ModifierProduit(Produit produitAvant, Produit produitApres)
+        {
+            List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
+
+            for(int i = 0; i < lines.Count; i++)
+            {
+                Produit produit = LineToProduit(lines[i]);
+
+                if (ProduitToLine(produit).Equals(ProduitToLine(produitAvant)))
+                {
+                    lines[i] = ProduitToLine(produitApres);
+                }
+            }
 
             System.IO.File.WriteAllLines(csvPath, lines);
         }
