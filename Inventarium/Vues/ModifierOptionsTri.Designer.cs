@@ -54,6 +54,7 @@
             this.ListeOrdre.Name = "ListeOrdre";
             this.ListeOrdre.Size = new System.Drawing.Size(230, 365);
             this.ListeOrdre.TabIndex = 0;
+            this.ListeOrdre.TabStop = false;
             this.ListeOrdre.UseCompatibleStateImageBehavior = false;
             this.ListeOrdre.View = System.Windows.Forms.View.Details;
             this.ListeOrdre.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.ListeOrdre_ItemSelectionChanged);
@@ -84,7 +85,7 @@
             this.CheckboxFournisseur.Location = new System.Drawing.Point(293, 75);
             this.CheckboxFournisseur.Name = "CheckboxFournisseur";
             this.CheckboxFournisseur.Size = new System.Drawing.Size(120, 24);
-            this.CheckboxFournisseur.TabIndex = 2;
+            this.CheckboxFournisseur.TabIndex = 0;
             this.CheckboxFournisseur.Text = "Fournisseur";
             this.CheckboxFournisseur.UseVisualStyleBackColor = true;
             this.CheckboxFournisseur.CheckedChanged += new System.EventHandler(this.CheckboxFournisseur_CheckedChanged);
@@ -96,7 +97,7 @@
             this.CheckboxCategorie.Location = new System.Drawing.Point(293, 105);
             this.CheckboxCategorie.Name = "CheckboxCategorie";
             this.CheckboxCategorie.Size = new System.Drawing.Size(103, 24);
-            this.CheckboxCategorie.TabIndex = 3;
+            this.CheckboxCategorie.TabIndex = 1;
             this.CheckboxCategorie.Text = "Catégorie";
             this.CheckboxCategorie.UseVisualStyleBackColor = true;
             this.CheckboxCategorie.CheckedChanged += new System.EventHandler(this.CheckboxCategorie_CheckedChanged);
@@ -108,7 +109,7 @@
             this.CheckboxNom.Location = new System.Drawing.Point(293, 135);
             this.CheckboxNom.Name = "CheckboxNom";
             this.CheckboxNom.Size = new System.Drawing.Size(66, 24);
-            this.CheckboxNom.TabIndex = 4;
+            this.CheckboxNom.TabIndex = 2;
             this.CheckboxNom.Text = "Nom";
             this.CheckboxNom.UseVisualStyleBackColor = true;
             this.CheckboxNom.CheckedChanged += new System.EventHandler(this.CheckboxNom_CheckedChanged);
@@ -120,7 +121,7 @@
             this.CheckboxDate.Location = new System.Drawing.Point(293, 165);
             this.CheckboxDate.Name = "CheckboxDate";
             this.CheckboxDate.Size = new System.Drawing.Size(67, 24);
-            this.CheckboxDate.TabIndex = 5;
+            this.CheckboxDate.TabIndex = 3;
             this.CheckboxDate.Text = "Date";
             this.CheckboxDate.UseVisualStyleBackColor = true;
             this.CheckboxDate.CheckedChanged += new System.EventHandler(this.CheckboxDate_CheckedChanged);
@@ -140,7 +141,7 @@
             this.BDescendre.Location = new System.Drawing.Point(293, 273);
             this.BDescendre.Name = "BDescendre";
             this.BDescendre.Size = new System.Drawing.Size(178, 54);
-            this.BDescendre.TabIndex = 7;
+            this.BDescendre.TabIndex = 4;
             this.BDescendre.Text = "Descendre d\'un cran la catégorie sélectionnée";
             this.BDescendre.UseVisualStyleBackColor = true;
             this.BDescendre.Click += new System.EventHandler(this.BDescendre_Click);
@@ -150,7 +151,7 @@
             this.BMonter.Location = new System.Drawing.Point(506, 273);
             this.BMonter.Name = "BMonter";
             this.BMonter.Size = new System.Drawing.Size(178, 54);
-            this.BMonter.TabIndex = 8;
+            this.BMonter.TabIndex = 5;
             this.BMonter.Text = "Monter d\'un cran la catégorie sélectionnée";
             this.BMonter.UseVisualStyleBackColor = true;
             this.BMonter.Click += new System.EventHandler(this.BMonter_Click);

@@ -30,26 +30,26 @@
         {
             this.LbAjouter = new System.Windows.Forms.Label();
             this.LbRef = new System.Windows.Forms.Label();
-            this.TRef = new System.Windows.Forms.TextBox();
-            this.TFournisseur = new System.Windows.Forms.TextBox();
+            this.ChampRef = new System.Windows.Forms.TextBox();
+            this.ChampFournisseur = new System.Windows.Forms.TextBox();
             this.LbFournisseur = new System.Windows.Forms.Label();
-            this.TCategorie = new System.Windows.Forms.TextBox();
+            this.ChampCategorie = new System.Windows.Forms.TextBox();
             this.LbCategorie = new System.Windows.Forms.Label();
-            this.TNom = new System.Windows.Forms.TextBox();
+            this.ChampNom = new System.Windows.Forms.TextBox();
             this.LbNom = new System.Windows.Forms.Label();
-            this.NPrixHT = new System.Windows.Forms.NumericUpDown();
+            this.ChampPrixHT = new System.Windows.Forms.NumericUpDown();
             this.LbPrixHT = new System.Windows.Forms.Label();
             this.LbPrixTTC = new System.Windows.Forms.Label();
-            this.NPrixTTC = new System.Windows.Forms.NumericUpDown();
+            this.ChampPrixTTC = new System.Windows.Forms.NumericUpDown();
             this.LbDate = new System.Windows.Forms.Label();
-            this.DTDate = new System.Windows.Forms.DateTimePicker();
-            this.NQuantite = new System.Windows.Forms.NumericUpDown();
+            this.ChampDate = new System.Windows.Forms.DateTimePicker();
+            this.ChampQuantite = new System.Windows.Forms.NumericUpDown();
             this.LbQuantite = new System.Windows.Forms.Label();
             this.BAjouter = new System.Windows.Forms.Button();
             this.BVider = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.NPrixHT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NPrixTTC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NQuantite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChampPrixHT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChampPrixTTC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChampQuantite)).BeginInit();
             this.SuspendLayout();
             // 
             // LbAjouter
@@ -71,19 +71,19 @@
             this.LbRef.TabIndex = 1;
             this.LbRef.Text = "Référence";
             // 
-            // TRef
+            // ChampRef
             // 
-            this.TRef.Location = new System.Drawing.Point(223, 99);
-            this.TRef.Name = "TRef";
-            this.TRef.Size = new System.Drawing.Size(254, 22);
-            this.TRef.TabIndex = 2;
+            this.ChampRef.Location = new System.Drawing.Point(223, 99);
+            this.ChampRef.Name = "ChampRef";
+            this.ChampRef.Size = new System.Drawing.Size(254, 22);
+            this.ChampRef.TabIndex = 0;
             // 
-            // TFournisseur
+            // ChampFournisseur
             // 
-            this.TFournisseur.Location = new System.Drawing.Point(223, 127);
-            this.TFournisseur.Name = "TFournisseur";
-            this.TFournisseur.Size = new System.Drawing.Size(254, 22);
-            this.TFournisseur.TabIndex = 4;
+            this.ChampFournisseur.Location = new System.Drawing.Point(223, 127);
+            this.ChampFournisseur.Name = "ChampFournisseur";
+            this.ChampFournisseur.Size = new System.Drawing.Size(254, 22);
+            this.ChampFournisseur.TabIndex = 1;
             // 
             // LbFournisseur
             // 
@@ -94,12 +94,12 @@
             this.LbFournisseur.TabIndex = 3;
             this.LbFournisseur.Text = "Fournisseur";
             // 
-            // TCategorie
+            // ChampCategorie
             // 
-            this.TCategorie.Location = new System.Drawing.Point(223, 155);
-            this.TCategorie.Name = "TCategorie";
-            this.TCategorie.Size = new System.Drawing.Size(254, 22);
-            this.TCategorie.TabIndex = 6;
+            this.ChampCategorie.Location = new System.Drawing.Point(223, 155);
+            this.ChampCategorie.Name = "ChampCategorie";
+            this.ChampCategorie.Size = new System.Drawing.Size(254, 22);
+            this.ChampCategorie.TabIndex = 2;
             // 
             // LbCategorie
             // 
@@ -110,12 +110,12 @@
             this.LbCategorie.TabIndex = 5;
             this.LbCategorie.Text = "Catégorie";
             // 
-            // TNom
+            // ChampNom
             // 
-            this.TNom.Location = new System.Drawing.Point(223, 183);
-            this.TNom.Name = "TNom";
-            this.TNom.Size = new System.Drawing.Size(254, 22);
-            this.TNom.TabIndex = 8;
+            this.ChampNom.Location = new System.Drawing.Point(223, 183);
+            this.ChampNom.Name = "ChampNom";
+            this.ChampNom.Size = new System.Drawing.Size(254, 22);
+            this.ChampNom.TabIndex = 3;
             // 
             // LbNom
             // 
@@ -126,24 +126,25 @@
             this.LbNom.TabIndex = 7;
             this.LbNom.Text = "Nom";
             // 
-            // NPrixHT
+            // ChampPrixHT
             // 
-            this.NPrixHT.DecimalPlaces = 2;
-            this.NPrixHT.Location = new System.Drawing.Point(223, 211);
-            this.NPrixHT.Maximum = new decimal(new int[] {
+            this.ChampPrixHT.DecimalPlaces = 2;
+            this.ChampPrixHT.Location = new System.Drawing.Point(223, 211);
+            this.ChampPrixHT.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
-            this.NPrixHT.Minimum = new decimal(new int[] {
+            this.ChampPrixHT.Minimum = new decimal(new int[] {
             99999,
             0,
             0,
             -2147483648});
-            this.NPrixHT.Name = "NPrixHT";
-            this.NPrixHT.Size = new System.Drawing.Size(254, 22);
-            this.NPrixHT.TabIndex = 9;
-            this.NPrixHT.ThousandsSeparator = true;
+            this.ChampPrixHT.Name = "ChampPrixHT";
+            this.ChampPrixHT.Size = new System.Drawing.Size(254, 22);
+            this.ChampPrixHT.TabIndex = 4;
+            this.ChampPrixHT.ThousandsSeparator = true;
+            this.ChampPrixHT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numericUpDown_KeyPress);
             // 
             // LbPrixHT
             // 
@@ -163,24 +164,25 @@
             this.LbPrixTTC.TabIndex = 12;
             this.LbPrixTTC.Text = "PrixTTC";
             // 
-            // NPrixTTC
+            // ChampPrixTTC
             // 
-            this.NPrixTTC.DecimalPlaces = 2;
-            this.NPrixTTC.Location = new System.Drawing.Point(223, 239);
-            this.NPrixTTC.Maximum = new decimal(new int[] {
+            this.ChampPrixTTC.DecimalPlaces = 2;
+            this.ChampPrixTTC.Location = new System.Drawing.Point(223, 239);
+            this.ChampPrixTTC.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
-            this.NPrixTTC.Minimum = new decimal(new int[] {
+            this.ChampPrixTTC.Minimum = new decimal(new int[] {
             99999,
             0,
             0,
             -2147483648});
-            this.NPrixTTC.Name = "NPrixTTC";
-            this.NPrixTTC.Size = new System.Drawing.Size(254, 22);
-            this.NPrixTTC.TabIndex = 11;
-            this.NPrixTTC.ThousandsSeparator = true;
+            this.ChampPrixTTC.Name = "ChampPrixTTC";
+            this.ChampPrixTTC.Size = new System.Drawing.Size(254, 22);
+            this.ChampPrixTTC.TabIndex = 5;
+            this.ChampPrixTTC.ThousandsSeparator = true;
+            this.ChampPrixTTC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numericUpDown_KeyPress);
             // 
             // LbDate
             // 
@@ -191,25 +193,25 @@
             this.LbDate.TabIndex = 13;
             this.LbDate.Text = "Date";
             // 
-            // DTDate
+            // ChampDate
             // 
-            this.DTDate.Location = new System.Drawing.Point(223, 267);
-            this.DTDate.Name = "DTDate";
-            this.DTDate.Size = new System.Drawing.Size(254, 22);
-            this.DTDate.TabIndex = 14;
+            this.ChampDate.Location = new System.Drawing.Point(223, 267);
+            this.ChampDate.Name = "ChampDate";
+            this.ChampDate.Size = new System.Drawing.Size(254, 22);
+            this.ChampDate.TabIndex = 6;
             // 
-            // NQuantite
+            // ChampQuantite
             // 
-            this.NQuantite.Location = new System.Drawing.Point(223, 295);
-            this.NQuantite.Maximum = new decimal(new int[] {
+            this.ChampQuantite.Location = new System.Drawing.Point(223, 295);
+            this.ChampQuantite.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
-            this.NQuantite.Name = "NQuantite";
-            this.NQuantite.Size = new System.Drawing.Size(254, 22);
-            this.NQuantite.TabIndex = 15;
-            this.NQuantite.ThousandsSeparator = true;
+            this.ChampQuantite.Name = "ChampQuantite";
+            this.ChampQuantite.Size = new System.Drawing.Size(254, 22);
+            this.ChampQuantite.TabIndex = 7;
+            this.ChampQuantite.ThousandsSeparator = true;
             // 
             // LbQuantite
             // 
@@ -225,7 +227,7 @@
             this.BAjouter.Location = new System.Drawing.Point(314, 335);
             this.BAjouter.Name = "BAjouter";
             this.BAjouter.Size = new System.Drawing.Size(163, 35);
-            this.BAjouter.TabIndex = 19;
+            this.BAjouter.TabIndex = 8;
             this.BAjouter.Text = "Ajouter un produit";
             this.BAjouter.UseVisualStyleBackColor = true;
             this.BAjouter.Click += new System.EventHandler(this.BAjouter_Click);
@@ -235,7 +237,7 @@
             this.BVider.Location = new System.Drawing.Point(69, 335);
             this.BVider.Name = "BVider";
             this.BVider.Size = new System.Drawing.Size(163, 35);
-            this.BVider.TabIndex = 20;
+            this.BVider.TabIndex = 9;
             this.BVider.Text = "Vider les champs";
             this.BVider.UseVisualStyleBackColor = true;
             this.BVider.Click += new System.EventHandler(this.BVider_Click);
@@ -249,29 +251,31 @@
             this.Controls.Add(this.BVider);
             this.Controls.Add(this.BAjouter);
             this.Controls.Add(this.LbQuantite);
-            this.Controls.Add(this.NQuantite);
-            this.Controls.Add(this.DTDate);
+            this.Controls.Add(this.ChampQuantite);
+            this.Controls.Add(this.ChampDate);
             this.Controls.Add(this.LbDate);
             this.Controls.Add(this.LbPrixTTC);
-            this.Controls.Add(this.NPrixTTC);
+            this.Controls.Add(this.ChampPrixTTC);
             this.Controls.Add(this.LbPrixHT);
-            this.Controls.Add(this.NPrixHT);
-            this.Controls.Add(this.TNom);
+            this.Controls.Add(this.ChampPrixHT);
+            this.Controls.Add(this.ChampNom);
             this.Controls.Add(this.LbNom);
-            this.Controls.Add(this.TCategorie);
+            this.Controls.Add(this.ChampCategorie);
             this.Controls.Add(this.LbCategorie);
-            this.Controls.Add(this.TFournisseur);
+            this.Controls.Add(this.ChampFournisseur);
             this.Controls.Add(this.LbFournisseur);
-            this.Controls.Add(this.TRef);
+            this.Controls.Add(this.ChampRef);
             this.Controls.Add(this.LbRef);
             this.Controls.Add(this.LbAjouter);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "ProduitAjouter";
             this.Text = "Ajouter un produit";
             this.Load += new System.EventHandler(this.ProduitAjouter_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.NPrixHT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NPrixTTC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NQuantite)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProduitAjouter_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.ChampPrixHT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChampPrixTTC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChampQuantite)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,20 +285,20 @@
 
         private System.Windows.Forms.Label LbAjouter;
         private System.Windows.Forms.Label LbRef;
-        private System.Windows.Forms.TextBox TRef;
-        private System.Windows.Forms.TextBox TFournisseur;
+        private System.Windows.Forms.TextBox ChampRef;
+        private System.Windows.Forms.TextBox ChampFournisseur;
         private System.Windows.Forms.Label LbFournisseur;
-        private System.Windows.Forms.TextBox TCategorie;
+        private System.Windows.Forms.TextBox ChampCategorie;
         private System.Windows.Forms.Label LbCategorie;
-        private System.Windows.Forms.TextBox TNom;
+        private System.Windows.Forms.TextBox ChampNom;
         private System.Windows.Forms.Label LbNom;
-        private System.Windows.Forms.NumericUpDown NPrixHT;
+        private System.Windows.Forms.NumericUpDown ChampPrixHT;
         private System.Windows.Forms.Label LbPrixHT;
         private System.Windows.Forms.Label LbPrixTTC;
-        private System.Windows.Forms.NumericUpDown NPrixTTC;
+        private System.Windows.Forms.NumericUpDown ChampPrixTTC;
         private System.Windows.Forms.Label LbDate;
-        private System.Windows.Forms.DateTimePicker DTDate;
-        private System.Windows.Forms.NumericUpDown NQuantite;
+        private System.Windows.Forms.DateTimePicker ChampDate;
+        private System.Windows.Forms.NumericUpDown ChampQuantite;
         private System.Windows.Forms.Label LbQuantite;
         private System.Windows.Forms.Button BAjouter;
         private System.Windows.Forms.Button BVider;

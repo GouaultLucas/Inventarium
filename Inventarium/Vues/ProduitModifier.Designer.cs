@@ -67,7 +67,7 @@
             this.BReset.Location = new System.Drawing.Point(69, 337);
             this.BReset.Name = "BReset";
             this.BReset.Size = new System.Drawing.Size(181, 35);
-            this.BReset.TabIndex = 38;
+            this.BReset.TabIndex = 9;
             this.BReset.Text = "Réinitialiser les champs";
             this.BReset.UseVisualStyleBackColor = true;
             this.BReset.Click += new System.EventHandler(this.BReset_Click);
@@ -77,7 +77,7 @@
             this.BModifier.Location = new System.Drawing.Point(296, 337);
             this.BModifier.Name = "BModifier";
             this.BModifier.Size = new System.Drawing.Size(181, 35);
-            this.BModifier.TabIndex = 37;
+            this.BModifier.TabIndex = 8;
             this.BModifier.Text = "Modifier le produit";
             this.BModifier.UseVisualStyleBackColor = true;
             this.BModifier.Click += new System.EventHandler(this.BModifier_Click);
@@ -101,7 +101,7 @@
             0});
             this.ChampQuantite.Name = "ChampQuantite";
             this.ChampQuantite.Size = new System.Drawing.Size(254, 22);
-            this.ChampQuantite.TabIndex = 35;
+            this.ChampQuantite.TabIndex = 7;
             this.ChampQuantite.ThousandsSeparator = true;
             // 
             // ChampDate
@@ -109,7 +109,7 @@
             this.ChampDate.Location = new System.Drawing.Point(223, 269);
             this.ChampDate.Name = "ChampDate";
             this.ChampDate.Size = new System.Drawing.Size(254, 22);
-            this.ChampDate.TabIndex = 34;
+            this.ChampDate.TabIndex = 6;
             // 
             // LbDate
             // 
@@ -145,8 +145,9 @@
             -2147483648});
             this.ChampPrixTTC.Name = "ChampPrixTTC";
             this.ChampPrixTTC.Size = new System.Drawing.Size(254, 22);
-            this.ChampPrixTTC.TabIndex = 31;
+            this.ChampPrixTTC.TabIndex = 5;
             this.ChampPrixTTC.ThousandsSeparator = true;
+            this.ChampPrixTTC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numericUpDown_KeyPress);
             // 
             // LbPrixHT
             // 
@@ -173,15 +174,16 @@
             -2147483648});
             this.ChampPrixHT.Name = "ChampPrixHT";
             this.ChampPrixHT.Size = new System.Drawing.Size(254, 22);
-            this.ChampPrixHT.TabIndex = 29;
+            this.ChampPrixHT.TabIndex = 4;
             this.ChampPrixHT.ThousandsSeparator = true;
+            this.ChampPrixHT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numericUpDown_KeyPress);
             // 
             // ChampNom
             // 
             this.ChampNom.Location = new System.Drawing.Point(223, 185);
             this.ChampNom.Name = "ChampNom";
             this.ChampNom.Size = new System.Drawing.Size(254, 22);
-            this.ChampNom.TabIndex = 28;
+            this.ChampNom.TabIndex = 3;
             // 
             // LbNom
             // 
@@ -197,7 +199,7 @@
             this.ChampCategorie.Location = new System.Drawing.Point(223, 157);
             this.ChampCategorie.Name = "ChampCategorie";
             this.ChampCategorie.Size = new System.Drawing.Size(254, 22);
-            this.ChampCategorie.TabIndex = 26;
+            this.ChampCategorie.TabIndex = 2;
             // 
             // LbCategorie
             // 
@@ -213,7 +215,7 @@
             this.ChampFournisseur.Location = new System.Drawing.Point(223, 129);
             this.ChampFournisseur.Name = "ChampFournisseur";
             this.ChampFournisseur.Size = new System.Drawing.Size(254, 22);
-            this.ChampFournisseur.TabIndex = 24;
+            this.ChampFournisseur.TabIndex = 1;
             // 
             // LbFournisseur
             // 
@@ -229,7 +231,7 @@
             this.ChampRef.Location = new System.Drawing.Point(223, 101);
             this.ChampRef.Name = "ChampRef";
             this.ChampRef.Size = new System.Drawing.Size(254, 22);
-            this.ChampRef.TabIndex = 22;
+            this.ChampRef.TabIndex = 0;
             // 
             // LbRef
             // 
@@ -265,10 +267,12 @@
             this.Controls.Add(this.ChampRef);
             this.Controls.Add(this.LbRef);
             this.Controls.Add(this.LbAjouter);
+            this.KeyPreview = true;
             this.Name = "ProduitModifier";
             this.Text = "Modifier un produit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProduitModifier_FormClosing);
             this.Load += new System.EventHandler(this.ProduitModifier_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProduitModifier_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ChampQuantite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChampPrixTTC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChampPrixHT)).EndInit();

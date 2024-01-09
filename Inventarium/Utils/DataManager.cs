@@ -48,7 +48,7 @@ namespace Inventarium.Utils
 
             List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
 
-            lines.RemoveAt(0);
+            if(lines.Count > 0) lines.RemoveAt(0);
 
             return lines;
         }

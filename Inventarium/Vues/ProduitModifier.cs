@@ -88,5 +88,34 @@ namespace Inventarium.Vues
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void numericUpDown_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.KeyChar = ((System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator.ToCharArray()[0];
+            }
+        }
+
+        private void ProduitModifier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter))
+            {
+                if (ActiveControl.TabIndex < 7)
+                {
+                    for (int i = 0; i < Controls.Count; i++)
+                    {
+                        if (Controls[i].TabStop == true && Controls[i].TabIndex == ActiveControl.TabIndex + 1)
+                        {
+                            ActiveControl = Controls[i];
+                        }
+                    }
+                }
+                else if (ActiveControl.TabIndex == 7)
+                {
+                    BModifier_Click(sender, e);
+                }
+            }
+        }
     }
 }

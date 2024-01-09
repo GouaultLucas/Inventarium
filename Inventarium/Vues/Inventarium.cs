@@ -120,16 +120,16 @@ namespace Inventarium
 
         private void ReinitialiserChamps()
         {
-            TRef.Text = String.Empty;
-            TFournisseur.Text = String.Empty;
-            TCateg.Text = String.Empty;
-            TNom.Text = String.Empty;
+            ChampRef.Text = String.Empty;
+            ChampFournisseur.Text = String.Empty;
+            ChampCateg.Text = String.Empty;
+            ChampNom.Text = String.Empty;
 
-            DTApres.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            DTAvant.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            ChampApres.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            ChampAvant.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
-            DTApres.Checked = false;
-            DTAvant.Checked = false;
+            ChampApres.Checked = false;
+            ChampAvant.Checked = false;
         }
         private void BVider_Click(object sender, EventArgs e)
         {
@@ -141,11 +141,11 @@ namespace Inventarium
 
             List<Produit> lesProduits = produits.ToList();
 
-            if(TRef.Text != "")
+            if(ChampRef.Text != "")
             {
                 for (int i = 0; i < lesProduits.Count; i++)
                 {
-                    if (!lesProduits[i].Reference.Contains(TRef.Text))
+                    if (!lesProduits[i].Reference.Contains(ChampRef.Text))
                     {
                         lesProduits.RemoveAt(i);
                         i--;
@@ -153,11 +153,11 @@ namespace Inventarium
                 }
             }
 
-            if(TFournisseur.Text != "")
+            if(ChampFournisseur.Text != "")
             {
                 for (int i = 0; i < lesProduits.Count; i++)
                 {
-                    if (!lesProduits[i].Fournisseur.Contains(TFournisseur.Text))
+                    if (!lesProduits[i].Fournisseur.Contains(ChampFournisseur.Text))
                     {
                         lesProduits.RemoveAt(i);
                         i--;
@@ -165,11 +165,11 @@ namespace Inventarium
                 }
             }
 
-            if (TCateg.Text != "")
+            if (ChampCateg.Text != "")
             {
                 for (int i = 0; i < lesProduits.Count; i++)
                 {
-                    if (!lesProduits[i].Categorie.Contains(TCateg.Text))
+                    if (!lesProduits[i].Categorie.Contains(ChampCateg.Text))
                     {
                         lesProduits.RemoveAt(i);
                         i--;
@@ -177,11 +177,11 @@ namespace Inventarium
                 }
             }
 
-            if (TNom.Text != "")
+            if (ChampNom.Text != "")
             {
                 for (int i = 0; i < lesProduits.Count; i++)
                 {
-                    if (!lesProduits[i].Nom.Contains(TNom.Text))
+                    if (!lesProduits[i].Nom.Contains(ChampNom.Text))
                     {
                         lesProduits.RemoveAt(i);
                         i--;
@@ -189,19 +189,19 @@ namespace Inventarium
                 }
             }
 
-            if(DTApres.Checked && DTAvant.Checked)
+            if(ChampApres.Checked && ChampAvant.Checked)
             {
-                if (DTApres.Value > DTAvant.Value)
+                if (ChampApres.Value > ChampAvant.Value)
                 {
-                    (DTAvant.Value, DTApres.Value) = (DTApres.Value, DTAvant.Value);
+                    (ChampAvant.Value, ChampApres.Value) = (ChampApres.Value, ChampAvant.Value);
                 }
             }
 
-            if(DTApres.Checked)
+            if(ChampApres.Checked)
             {
                 for (int i = 0; i < lesProduits.Count; i++)
                 {
-                    if (lesProduits[i].Date < DTApres.Value)
+                    if (lesProduits[i].Date < ChampApres.Value)
                     {
                         lesProduits.RemoveAt(i);
                         i--;
@@ -209,11 +209,11 @@ namespace Inventarium
                 }
             }
 
-            if (DTAvant.Checked)
+            if (ChampAvant.Checked)
             {
                 for (int i = 0; i < lesProduits.Count; i++)
                 {
-                    if (lesProduits[i].Date > DTAvant.Value)
+                    if (lesProduits[i].Date > ChampAvant.Value)
                     {
                         lesProduits.RemoveAt(i);
                         i--;
@@ -324,6 +324,27 @@ namespace Inventarium
                 this.Show();
                 LoadList();
             };
+        }
+
+        private void Inventarium_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter))
+            {
+                if (ActiveControl.TabIndex < 5)
+                {
+                    for (int i = 0; i < Controls.Count; i++)
+                    {
+                        if (Controls[i].TabStop == true && Controls[i].TabIndex == ActiveControl.TabIndex + 1)
+                        {
+                            ActiveControl = Controls[i];
+                        }
+                    }
+                }
+                else if (ActiveControl.TabIndex == 5)
+                {
+                    Rechercher(sender, e);
+                }
+            }
         }
     }
 }
