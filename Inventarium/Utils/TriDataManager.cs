@@ -40,7 +40,7 @@ namespace Inventarium.Utils
 
         public static void Save(string str)
         {
-            System.IO.File.WriteAllText(csvPath, str);
+            System.IO.File.WriteAllText(csvPath, str, Encoding.UTF8);
         }
     }
 }

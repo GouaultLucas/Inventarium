@@ -48,7 +48,15 @@ namespace Inventarium.Utils
 
             List<string> lines = System.IO.File.ReadAllLines(csvPath).ToList();
 
+            lines.RemoveAt(0);
+
             return lines;
+        }
+        private static void SaveLines(List<string> lines)
+        {
+            lines.Insert(0, "Référence;Fournisseur;Catégorie;Nom;Prix HT;Prix TTC;Date;Quantité");
+
+            System.IO.File.WriteAllLines(csvPath, lines, Encoding.UTF8);
         }
         public static Produit LineToProduit(string line)
         {
@@ -143,7 +151,7 @@ namespace Inventarium.Utils
 
             lines.Add(ProduitToLine(produit));
 
-            System.IO.File.WriteAllLines(csvPath, lines);
+            SaveLines(lines);
         }
         public static void ModifierProduit(Produit produitAvant, Produit produitApres)
         {
@@ -159,7 +167,7 @@ namespace Inventarium.Utils
                 }
             }
 
-            System.IO.File.WriteAllLines(csvPath, lines);
+            SaveLines(lines);
         }
 
         public static void SupprimerProduit(Produit produit)
@@ -168,7 +176,7 @@ namespace Inventarium.Utils
 
             lines.Remove(ProduitToLine(produit));
 
-            System.IO.File.WriteAllLines(csvPath, lines);
+            SaveLines(lines);
         }
     }
 }

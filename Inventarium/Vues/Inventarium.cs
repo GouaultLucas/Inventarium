@@ -35,6 +35,41 @@ namespace Inventarium
             produits.Clear();
 
             List<string> lines = DataManager.LoadLines();
+
+            string[] ordreTri = TriDataManager.Load().Split(';');
+
+            for(int i = 0; i < ordreTri.Count(); i++)
+            {
+                if (ordreTri[i] != "")
+                {
+                    if (ordreTri[i] == "Fournisseur")
+                    {
+                        lines = lines.OrderBy(x => x.Split(';')[1]).ToList();
+                    }
+                    else if(ordreTri[i] == "Catégorie")
+                    {
+                        lines = lines.OrderBy(x => x.Split(';')[2]).ToList();
+                    }
+                    else if(ordreTri[i] == "Nom")
+                    {
+                        lines = lines.OrderBy(x => x.Split(';')[3]).ToList();
+                    }
+                    else if (ordreTri[i] == "Date")
+                    {
+                        lines.Sort((a,b) =>
+                        {
+                            string[] aDateStr = a.Split(';')[6].Split('/');
+                            string[] bDateStr = b.Split(';')[6].Split('/');
+
+                            DateTime aDate = new DateTime(int.Parse(aDateStr[2]), int.Parse(aDateStr[1]), int.Parse(aDateStr[0]));
+                            DateTime bDate = new DateTime(int.Parse(bDateStr[2]), int.Parse(bDateStr[1]), int.Parse(bDateStr[0]));
+
+                            return aDate.CompareTo(bDate);
+                        });
+                    }
+                }
+            }
+
             foreach (string line in lines)
             {
                 Produit produit = DataManager.LineToProduit(line);
@@ -51,6 +86,8 @@ namespace Inventarium
 
                 LVProduit.Items.Add(item);
             }
+
+
         }
 
         private void LoadList(List<Produit> produits)
@@ -282,7 +319,11 @@ namespace Inventarium
             ModifierOptionsTri modifierOptionsTri = new ModifierOptionsTri();
             this.Hide();
             modifierOptionsTri.Show();
-            modifierOptionsTri.FormClosed += (source, args) => this.Show();
+            modifierOptionsTri.FormClosed += (source, args) => 
+            {
+                this.Show();
+                LoadList();
+            };
         }
     }
 }
